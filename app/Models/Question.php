@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'question_text'
+    ];
 
     protected $table = 'questions';
 
@@ -26,4 +29,5 @@ class Question extends Model
     public function topic() {
         return $this->hasOne('App\Models\Quiz', 'id', 'quiz_id');
     }
+
 }

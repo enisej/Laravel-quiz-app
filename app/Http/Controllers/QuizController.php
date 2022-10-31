@@ -7,6 +7,7 @@ use App\Models\Options;
 use App\Models\Question;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
+use function MongoDB\BSON\toJSON;
 
 
 class QuizController extends Controller
@@ -35,21 +36,41 @@ class QuizController extends Controller
     public function store(StoreQuizRequest $request)
     {
         $quiz = new Quiz();
-        $question = new Question();
-        $options = new Options();
-
         $quiz->title = $request->input('title');
         $quiz->save();
 
-        $question->question_text = $request->input('question_text');
-        $question->quiz_id = $quiz->id;
-        $question->save();
+        $questions = $request->input('question_text');
+        $options = $request->input('option');
 
-        $questionToAdd = Question::latest()->first();;
-        $questionID = $questionToAdd->id;
+          foreach ($questions as $question_text) {
+            $question = new Question();
+            $question->question_text = $question_text;
+            $question->quiz_id = $quiz->id;
+             $question->save();
 
-        return redirect(route('quizes.index'));
+              for($i=0; $i<=3; $i++){
+
+                  $option = new Options();
+                  $option->question_id = $question->id;
+                  $option->option = $options[$i];
+                  $correct = $request->input('correct');
+                  if($correct === 'on') {
+
+                  }
+                  $option->save();
+
+              }
+
+              dd($correct);
+          }
+
+
+
+     return redirect(route('quizes.index'));
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

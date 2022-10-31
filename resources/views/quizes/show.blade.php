@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <title>Qiuz</title>
 </head>
-<body>
+<body class="bg-gray-300/50">
 @include('partials.header')
 
 <div class=" mx-auto container">

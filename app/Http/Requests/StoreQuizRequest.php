@@ -26,7 +26,10 @@ class StoreQuizRequest extends FormRequest
         return [
             'title'=>'required',
             'question_text'=>'required',
-            'quiz_id'
+            'quiz_id',
+            'question_id',
+            'option',
+            'option_id'
         ];
     }
 }
