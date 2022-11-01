@@ -8,8 +8,9 @@
     @vite('resources/css/app.css')
     <title>Qiuz</title>
 </head>
+<x-app-layout>
 <body class="bg-gray-300/50">
-@include('partials.header')
+
 
 <div class=" mx-auto container">
     <form method="post">
@@ -33,10 +34,13 @@
                 </div>
             </div>
         @endforeach
-
+        <div class="flex justify-center">
+        <button class="mt-3 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+        </div>
     </form>
 
 </div>
 
 </body>
+</x-app-layout>
 </html>

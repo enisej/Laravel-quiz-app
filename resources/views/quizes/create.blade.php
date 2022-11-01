@@ -8,8 +8,9 @@
     @vite('resources/css/app.css')
     <title>Create quiz</title>
 </head>
+<x-app-layout>
 <body class="bg-gray-300/50">
-@include('partials.header')
+
 
     <div class=" mx-auto container">
         <form id="quizes" action="{{route('quizes.store')}}" method="post">
@@ -48,7 +49,10 @@
                 <div id="options_block_1" class="ml-4 mt-5 ">
                     <label class=" block text-gray-700 text-lg font-bold mb-2">Options</label>
                     <div class="flex">
-                        <input name="correct[option]" type="radio" class="mt-4 mr-4" />
+
+
+
+                        <input name="correct_0"  type="radio"  class="mt-4 mr-4" />
                         <input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                            type="text"
                            name="option[]"
@@ -59,7 +63,7 @@
 
                     </div>
                     <div class="flex">
-                        <input name="correct[option]" type="radio" class="mt-4 mr-4" />
+                        <input name="correct_1"  type="radio" class="mt-4 mr-4" />
                         <input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                type="text"
                                name="option[]"
@@ -67,7 +71,7 @@
                                placeholder="Option..."
                                required/>
                     </div>
-                    <div class="flex"><input name="correct[option]" type="radio" class="mt-4 mr-4" />
+                    <div class="flex"><input name="correct_2"  type="radio" class="mt-4 mr-4" />
                         <input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                type="text"
                                name="option[]"
@@ -76,7 +80,7 @@
                                required/>
                     </div>
                     <div class="flex">
-                        <input type="radio" name="correct[option]" class="mt-4 mr-4" />
+                        <input type="radio" name="correct_3" class="mt-4 mr-4" />
                         <input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                type="text"
                                name="option[]"
@@ -87,15 +91,19 @@
                 </div>
             </div>
             </div>
+            <div class="flex justify-center">
             <input
                 type="submit"
                 name="submit"
                 id="submit"
-                class="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                class="mt-3 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 value="Create"/>
+            </div>
         </form>
+
     </div>
 </body>
+</x-app-layout>
 <script>
 
     let id = 1;
@@ -112,10 +120,10 @@
                 '<div id="options_block" class="ml-4 mt-5 ">'+
                 '<label class=" block text-gray-700 text-lg font-bold mb-2">Options</label>' +
         '<div >'+
-            '<div class="flex"><input name="correct[]" type="checkbox" class="mt-4 mr-4" /><input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"type="text"name="option[]"class="form-control"placeholder="Option..."required/></div>'+
-            '<div class="flex"><input name="correct[]" type="checkbox" class="mt-4 mr-4" /><input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"type="text"name="option[]"class="form-control"placeholder="Option..."required/></div>'+
-                '<div class="flex"><input name="correct[]" type="checkbox" class="mt-4 mr-4" /><input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"type="text"name="option[]"class="form-control"placeholder="Option..."required/></div>'+
-                '<div class="flex"><input name="correct[]" type="checkbox" class="mt-4 mr-4" /><input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"type="text"name="option[]"class="form-control"placeholder="Option..."required/></div>'+
+            '<div class="flex"><input name="correct_0"  type="radio"  class="mt-4 mr-4" /><input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"type="text"name="option[]"class="form-control"placeholder="Option..."required/></div>'+
+            '<div class="flex"><input name="correct_0"  type="radio"  class="mt-4 mr-4" /><input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"type="text"name="option[]"class="form-control"placeholder="Option..."required/></div>'+
+                '<div class="flex"><input name="correct_0"  type="radio"  class="mt-4 mr-4" /><input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"type="text"name="option[]"class="form-control"placeholder="Option..."required/></div>'+
+                '<div class="flex"><input name="correct_0"  type="radio"  class="mt-4 mr-4" /><input class="mt-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"type="text"name="option[]"class="form-control"placeholder="Option..."required/></div>'+
                 '</div></div>';
 
             objTo.appendChild(divtest)

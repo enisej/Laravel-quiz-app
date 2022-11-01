@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\QuizController;
-use \App\Http\Controllers\QuestionController;
+use  App\Http\Controllers\QuizController;
+use App\Http\Controllers\ResultsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +14,16 @@ use \App\Http\Controllers\QuestionController;
 |
 */
 
-Route::view('/', 'welcome');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::resource('quizes', QuizController::class);
-Route::resource('questions', QuestionController::class);
+Route::resource('results', ResultsController::class)->middleware(['auth', 'verified']);
 
+require __DIR__.'/auth.php';

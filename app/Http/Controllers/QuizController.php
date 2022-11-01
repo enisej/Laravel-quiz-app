@@ -53,15 +53,22 @@ class QuizController extends Controller
                   $option = new Options();
                   $option->question_id = $question->id;
                   $option->option = $options[$i];
-                  $correct = $request->input('correct');
-                  if($correct === 'on') {
 
-                  }
+
+
+                $correct = $request->input('correct_' . $i);
+
+                if($correct === 'on'){
+                    $option->correct = 1;
+                }else{
+                    $option->correct = 0;
+                }
+
                   $option->save();
 
               }
 
-              dd($correct);
+
           }
 
 

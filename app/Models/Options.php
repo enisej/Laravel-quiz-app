@@ -9,6 +9,7 @@ class Options extends Model
 {
     use HasFactory;
 
+
     protected $table = 'questions_options';
 
     public function question()
