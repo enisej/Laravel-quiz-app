@@ -28,17 +28,22 @@
                         <p>
                             {{ date($quiz->created_at) }} - {{date($quiz->updated_at)}}
                         </p>
-                        @if(Auth::check() && Auth::user()->role === 'admin')
+
                         <div class="flex">
+                            @if(Auth::check())
                                 <a class="mr-3 mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{route('quizes.show', $quiz->id)}}" type="submit">Start</a>
+                            @endif
+                                @if(Auth::check() && Auth::user()->role === 'admin')
                             <form class="mr-3" action="{{route('quizes.destroy', $quiz->id)}}"
                                   method="post">
                                 @csrf
                                 @method('delete')
                                 <button class="mt-3 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</button>
                             </form>
+                                @endif
                         </div>
-                        @endif
+
+
                     </div>
 
                 </div>

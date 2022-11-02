@@ -20,7 +20,14 @@
 
                     @endif
 
-
+                        @if(Auth::check() && Auth::user()->role === 'user')
+                            <x-nav-link href="/" :active="request()->is('/')">
+                                Home
+                            </x-nav-link>
+                            <x-nav-link :href="route('quizes.index')" :active="request()->routeIs('quizes.index')">
+                                Quiz's
+                            </x-nav-link>
+                        @endif
 
 
 
@@ -31,10 +38,10 @@
                             <x-nav-link :href="route('quizes.index')" :active="request()->routeIs('quizes.index')">
                                 Quiz's
                             </x-nav-link>
-                        <x-nav-link href="login">
+                        <x-nav-link href="login" :active="request()->is('/login')">
                             Login
                         </x-nav-link>
-                            <x-nav-link href="register">
+                            <x-nav-link href="register" :active="request()->is('/register')">
                                 Register
                             </x-nav-link>
                     @endif

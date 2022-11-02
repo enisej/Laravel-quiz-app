@@ -11,15 +11,15 @@ class Results extends Model
 
     protected $table = 'results';
 
-    public function topic(){
-        return $this->belongsTo('Models\Quiz');
+    public function quiz(){
+        return $this->belongsTo('App\Models\Quiz');
     }
 
     public function user() {
-        return $this->hasOne('Models\User', 'id', 'user_id');
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
     public function options() {
-        return $this->hasMany('Models\UserOption', 'result_id', 'id');
+        return $this->hasMany('App\Models\UserOption', 'result_id', 'id');
     }
 }

@@ -24,6 +24,6 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('quizes', QuizController::class);
-Route::resource('results', ResultsController::class)->middleware(['auth', 'verified']);
+Route::resource('results', ResultsController::class);
 
 require __DIR__.'/auth.php';
