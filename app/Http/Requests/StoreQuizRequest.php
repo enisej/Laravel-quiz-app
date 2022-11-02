@@ -28,9 +28,6 @@ class StoreQuizRequest extends FormRequest
             'question_text'=>'required',
             'quiz_id',
             'question_id',
-            'option',
-            'option_id',
-            'correct'
         ];
     }
 }
