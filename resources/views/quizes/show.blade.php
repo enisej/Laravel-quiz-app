@@ -10,13 +10,35 @@
 </head>
 <x-app-layout>
 <body class="bg-gray-300/50">
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+    function incTimer() {
+        var currentMinutes = Math.floor(totalSecs / 60);
+        var currentSeconds = totalSecs % 60;
+        if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
+        if(currentMinutes <= 9) currentMinutes = "0" + currentMinutes;
+        totalSecs++;
+        $("#timer").text(currentMinutes + ":" + currentSeconds);
+        setTimeout('incTimer()', 1000);
+    }
 
+    totalSecs = 0;
+
+    $(document).ready(function() {
+        $("#start").click(function(e) {
+            e.preventDefault()
+            incTimer();
+        });
+    });
+    incTimer()
+</script>
 
 <div class=" mx-auto container">
-    <form method="post" action="{{route('results.store')}}">
+    <form method="post" action="{{route('results.store')}}" >
         @csrf
         <div class="mt-5 bg-white shadow-xl rounded px-8 pt-6 pb-8 mb-4">
-            <h1 class="text-3xl text-center " >{{$quiz->title}}</h1>
+            <h1 class="text-3xl text-center ">{{$quiz->title}}</h1>
+            <div id="timer" class="text-2xl font-bold text-center">00:00</div>
         </div>
         @csrf
         <input type="hidden" name="quiz_id" value="{{$quiz->id}}">
@@ -49,5 +71,6 @@
 </div>
 
 </body>
+
 </x-app-layout>
 </html>
